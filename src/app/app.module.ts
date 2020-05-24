@@ -7,10 +7,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { InstructionsComponent } from './instructions/instructions.component';
+import { StartComponent } from './start/start.component';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InstructionsComponent,
+    StartComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

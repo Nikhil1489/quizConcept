@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <mat-toolbar-row>
+        Instructions
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="wrapper">
+    <div class="container">
+        <div class="main">
+            <mat-card>
+                <mat-card-title>Insturctions to take quiz</mat-card-title>
+                <mat-card-subtitle>Time: {{time | date:'shortTime'}}</mat-card-subtitle>
+                <mat-card-content>
+                    <p class="mat-body">The quizzes consists of questions carefully designed to help you self-assess
+                        your comprehension of the information presented on the topics covered in the module.</p>
+                    <p class="body-1">The total score for the quiz is based on your responses to all questions. If you
+                        respond incorrectly to a question or retake a question again and get the correct response, your
+                        quiz score will reflect it appropriately. </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button routerLink="/question" mat-flat-button color="accent">Start Quiz</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

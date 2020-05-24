@@ -1,0 +1,30 @@
+::ng-deep body{
+    background: #f3f3f3;
+}
+
+.title{
+    margin-left: 16px;
+}
+
+.question{
+    padding: 32px;
+    h2{
+        font-size: 28px;
+        line-height: 1.1;
+        color: rgba(0,0,0,0.87);
+    }
+}
+
+.answers{
+
+    div{
+        margin: 0 0 16px;
+    }
+
+    button{
+        width: 100%;
+        color: #673ab7;
+        height: 60px;
+        font-size: 18px;
+    }
+}
