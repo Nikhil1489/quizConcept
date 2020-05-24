@@ -7,14 +7,16 @@
     <div class="container">
         <div class="main">
             <mat-card>
-                <mat-card-title>Insturctions to take quiz</mat-card-title>
+                <mat-card-title>Instructions To Take Quiz</mat-card-title>
                 <mat-card-subtitle>Time: {{time | date:'shortTime'}}</mat-card-subtitle>
                 <mat-card-content>
-                    <p class="mat-body">The quizzes consists of questions carefully designed to help you self-assess
+                    <p>The quizzes consists of questions carefully designed to help you self-assess
                         your comprehension of the information presented on the topics covered in the module.</p>
-                    <p class="body-1">The total score for the quiz is based on your responses to all questions. If you
-                        respond incorrectly to a question or retake a question again and get the correct response, your
-                        quiz score will reflect it appropriately. </p>
+                    <p>The total score for the quiz is based on your responses to all questions. </p>
+                    <p> If you respond incorrectly to a question or retake a question again and get the correct
+                        response, your quiz score will reflect it appropriately.</p>
+                    <p>However, your quiz will not be graded, if you skip a question or exit before responding to all
+                        the questions.</p>
                 </mat-card-content>
                 <mat-card-actions>
                     <button routerLink="/question" mat-flat-button color="accent">Start Quiz</button>

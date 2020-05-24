@@ -10,13 +10,20 @@ import { MaterialModule } from './material/material.module';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { StartComponent } from './start/start.component';
 import { QuestionComponent } from './question/question.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
+import {LocationStrategy, HashLocationStrategy, PathLocationStrategy} from '@angular/common';
+import { ThankyouComponent } from './thankyou/thankyou.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InstructionsComponent,
     StartComponent,
-    QuestionComponent
+    QuestionComponent,
+    SuccessComponent,
+    FailureComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +32,9 @@ import { QuestionComponent } from './question/question.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: PathLocationStrategy},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

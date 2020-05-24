@@ -1,0 +1,27 @@
+.thankyou_page{
+    width: 100%;
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: center;
+
+    h2{
+        width: 100%;
+        font-size: 28px;
+        margin: 0 0 32px;
+        color: rgba(0,0,0,0.87);
+    }
+
+    .thankyou_image{
+        max-width: 600px;
+        margin: 0 auto;
+        img{
+            max-width: 100%;;
+        }
+    }
+
+}
