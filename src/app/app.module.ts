@@ -33,7 +33,7 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
     BrowserAnimationsModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy},
+    { provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

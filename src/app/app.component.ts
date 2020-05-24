@@ -9,7 +9,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 })
 export class AppComponent {
   title = 'Quiz Concept';
-  constructor(private location: Location){
+  constructor(){
 
   }
 
