@@ -12,7 +12,7 @@ import { StartComponent } from './start/start.component';
 import { QuestionComponent } from './question/question.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
-import {LocationStrategy, HashLocationStrategy, PathLocationStrategy, APP_BASE_HREF} from '@angular/common';
+import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 
 @NgModule({
@@ -33,7 +33,6 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
     BrowserAnimationsModule
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: 'https://nikhil1489.github.io/quizConcept/'},
     { provide: LocationStrategy, useClass: PathLocationStrategy},
   ],
   bootstrap: [AppComponent]
