@@ -14,6 +14,7 @@ import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { ThankyouComponent } from './thankyou/thankyou.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    RouterModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule
   ],
