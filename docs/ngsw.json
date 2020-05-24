@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1590310828123,
+  "timestamp": 1590316066750,
   "index": "https://nikhil1489.github.io/quizConcept/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "https://nikhil1489.github.io/quizConcept/favicon.ico",
         "https://nikhil1489.github.io/quizConcept/index.html",
-        "https://nikhil1489.github.io/quizConcept/main-es2015.16463122ac21851829a9.js",
-        "https://nikhil1489.github.io/quizConcept/main-es5.16463122ac21851829a9.js",
+        "https://nikhil1489.github.io/quizConcept/main-es2015.acf8baec3ca6d67c7d77.js",
+        "https://nikhil1489.github.io/quizConcept/main-es5.acf8baec3ca6d67c7d77.js",
         "https://nikhil1489.github.io/quizConcept/manifest.webmanifest",
         "https://nikhil1489.github.io/quizConcept/polyfills-es2015.690002c25ea8557bb4b0.js",
         "https://nikhil1489.github.io/quizConcept/polyfills-es5.1fd9b76218eca8053895.js",
@@ -26,6 +26,8 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "https://nikhil1489.github.io/quizConcept/assets/emoji.svg",
+        "https://nikhil1489.github.io/quizConcept/assets/geek.svg",
         "https://nikhil1489.github.io/quizConcept/assets/icons/icon-128x128.png",
         "https://nikhil1489.github.io/quizConcept/assets/icons/icon-144x144.png",
         "https://nikhil1489.github.io/quizConcept/assets/icons/icon-152x152.png",
@@ -34,7 +36,9 @@
         "https://nikhil1489.github.io/quizConcept/assets/icons/icon-512x512.png",
         "https://nikhil1489.github.io/quizConcept/assets/icons/icon-72x72.png",
         "https://nikhil1489.github.io/quizConcept/assets/icons/icon-96x96.png",
+        "https://nikhil1489.github.io/quizConcept/assets/tick.svg",
         "https://nikhil1489.github.io/quizConcept/assets/undraw_develop_app_kvt2.svg",
+        "https://nikhil1489.github.io/quizConcept/assets/undraw_landscape_mode_53ej.svg",
         "https://nikhil1489.github.io/quizConcept/assets/undraw_my_notifications_rjej.svg",
         "https://nikhil1489.github.io/quizConcept/assets/undraw_online_test_gba7.svg",
         "https://nikhil1489.github.io/quizConcept/assets/undraw_social_friends_nsbv.svg"
@@ -44,6 +48,8 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "https://nikhil1489.github.io/quizConcept/assets/emoji.svg": "983cbaebf2e54454088defae33aadd6194bb223e",
+    "https://nikhil1489.github.io/quizConcept/assets/geek.svg": "ee131d2be7abb792a143d8b4817908430fc7cd4f",
     "https://nikhil1489.github.io/quizConcept/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "https://nikhil1489.github.io/quizConcept/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "https://nikhil1489.github.io/quizConcept/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -52,15 +58,17 @@
     "https://nikhil1489.github.io/quizConcept/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "https://nikhil1489.github.io/quizConcept/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "https://nikhil1489.github.io/quizConcept/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://nikhil1489.github.io/quizConcept/assets/tick.svg": "0b5306fc4b0f372237d7d7d751f1103ed3b6ae7d",
     "https://nikhil1489.github.io/quizConcept/assets/undraw_develop_app_kvt2.svg": "1ac66578002fad36bdbb12910325bf4bb2660561",
+    "https://nikhil1489.github.io/quizConcept/assets/undraw_landscape_mode_53ej.svg": "2d6729ed7c435fcfceff016b9fa4f598b5b6087d",
     "https://nikhil1489.github.io/quizConcept/assets/undraw_my_notifications_rjej.svg": "e923fc525ca9479ec316727bb25e942431d935fa",
     "https://nikhil1489.github.io/quizConcept/assets/undraw_online_test_gba7.svg": "5a78de42717fdaefe420d94930de3ce6f8cb6995",
     "https://nikhil1489.github.io/quizConcept/assets/undraw_social_friends_nsbv.svg": "1e923e61c8206f711446383b07db5e607d750805",
     "https://nikhil1489.github.io/quizConcept/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://nikhil1489.github.io/quizConcept/index.html": "4474d8180503a6463778e59c1915150671707de8",
-    "https://nikhil1489.github.io/quizConcept/main-es2015.16463122ac21851829a9.js": "74938999461b22505b845974da6debd53e1b425d",
-    "https://nikhil1489.github.io/quizConcept/main-es5.16463122ac21851829a9.js": "307407ba04d8145c0e2364051feb894f4cb38459",
-    "https://nikhil1489.github.io/quizConcept/manifest.webmanifest": "fef53a8f10fe9530b8bff72bc0a7508920d12a82",
+    "https://nikhil1489.github.io/quizConcept/index.html": "8e1ea56ac13c4b090f8ad79a3cc91e0846a2be8f",
+    "https://nikhil1489.github.io/quizConcept/main-es2015.acf8baec3ca6d67c7d77.js": "38dfa473c786db909a4db6df938580edd47bacc1",
+    "https://nikhil1489.github.io/quizConcept/main-es5.acf8baec3ca6d67c7d77.js": "c7c613dc5145aeb4c469565849f860d4a676860a",
+    "https://nikhil1489.github.io/quizConcept/manifest.webmanifest": "73f5c8772b4b1994269b1230c13e59ae26fb8540",
     "https://nikhil1489.github.io/quizConcept/polyfills-es2015.690002c25ea8557bb4b0.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "https://nikhil1489.github.io/quizConcept/polyfills-es5.1fd9b76218eca8053895.js": "89222a28dbabb780fc372d33834080e0cd3083d9",
     "https://nikhil1489.github.io/quizConcept/runtime-es2015.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
