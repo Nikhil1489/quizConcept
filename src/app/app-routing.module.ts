@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'instructions', component: InstructionsComponent},
   { path: 'question', component: QuestionComponent},
   { path: 'thankyou', component: ThankyouComponent},
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
