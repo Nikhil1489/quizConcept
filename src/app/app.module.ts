@@ -12,7 +12,7 @@ import { StartComponent } from './start/start.component';
 import { QuestionComponent } from './question/question.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {LocationStrategy, PathLocationStrategy, APP_BASE_HREF} from '@angular/common';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { RouterModule } from '@angular/router';
 
@@ -35,8 +35,9 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy}
+    { provide: LocationStrategy, useClass: PathLocationStrategy},
+    { provide: APP_BASE_HREF, useValue: window['_app_base'] || '/' }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
