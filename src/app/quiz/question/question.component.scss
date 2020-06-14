@@ -1,0 +1,58 @@
+::ng-deep body{
+    background: #f3f3f3;
+}
+
+.title{
+    margin-left: 16px;
+}
+
+.question{
+    padding: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    max-width: 600px;
+    height: calc(100vh - 56px);
+
+    @media (min-width: 600px) {
+        height: calc(100vh - 64px);
+    }
+
+    h2{
+        font-size: 28px;
+        line-height: 1.1;
+        margin: 0 0 32px;
+        color: rgba(0,0,0,0.87);
+    }
+}
+
+.answers{
+    width: 100%;
+
+    div{
+        margin: 0 0 16px;
+    }
+
+    button{
+        width: 100%;
+        color: #673ab7;
+        height: 60px;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    .option_tag{
+        background: #ffd740;
+        color: rgba(0,0,0,.87);
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        display: inline-flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+    }
+}
