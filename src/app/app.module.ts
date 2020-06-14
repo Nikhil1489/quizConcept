@@ -7,27 +7,19 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { InstructionsComponent } from './instructions/instructions.component';
-import { StartComponent } from './start/start.component';
-import { QuestionComponent } from './question/question.component';
-import { SuccessComponent } from './success/success.component';
-import { FailureComponent } from './failure/failure.component';
-import {LocationStrategy, PathLocationStrategy, APP_BASE_HREF, HashLocationStrategy} from '@angular/common';
-import { ThankyouComponent } from './thankyou/thankyou.component';
+import {LocationStrategy, APP_BASE_HREF, HashLocationStrategy} from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from './auth/auth.module';
+import { QuizModule } from './quiz/quiz.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InstructionsComponent,
-    StartComponent,
-    QuestionComponent,
-    SuccessComponent,
-    FailureComponent,
-    ThankyouComponent
   ],
   imports: [
     BrowserModule,
+    AuthModule,
+    QuizModule,
     AppRoutingModule,
     MaterialModule,
     RouterModule,
