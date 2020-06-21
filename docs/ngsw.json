@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1592745082189,
+  "timestamp": 1592745346308,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -65,7 +65,7 @@
     "/assets/undraw_online_test_gba7.svg": "5a78de42717fdaefe420d94930de3ce6f8cb6995",
     "/assets/undraw_social_friends_nsbv.svg": "1e923e61c8206f711446383b07db5e607d750805",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "9aee178f4cab978eb989b0839cb4f86c3153f822",
+    "/index.html": "601d539e7f07616b2ba7f1f546ff7ec0f8739471",
     "/main-es2015.ade582260d30a85a2b99.js": "1894e90db0d7db9181f95971047f6d9e560c0179",
     "/main-es5.ade582260d30a85a2b99.js": "af5afe495887234882df8af8e5236bc72a92c996",
     "/manifest.webmanifest": "eaf147ff00772c83e1c8db137d6e570f5ad217c7",
