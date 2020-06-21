@@ -1,1 +1,57 @@
-<p>register works!</p>
+<section class="auth_page">
+    <div class="login_Form">
+        <mat-card>
+            <h2>Register</h2>
+        <form novalidate [formGroup]="regForm" (ngSubmit)="register()">
+
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Your Name</mat-label>
+                <input matInput formControlName="name" >
+              </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Your Email</mat-label>
+                <input matInput type="email" formControlName="email" >
+              </mat-form-field>
+
+              <!-- <mat-form-field appearance="outline">
+                <mat-label>Location</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let location of locations" [value]="location.value">
+                    {{location.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button color="primary" value="1">Male</mat-radio-button>
+                <mat-radio-button color="primary" value="2">Female</mat-radio-button>
+              </mat-radio-group>
+
+
+              <mat-form-field appearance="outline">
+                <mat-label>Select Quiz Type</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let quiztype of quiztypes" [value]="quiztype.value">
+                    {{quiztype.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> -->
+
+
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Your Password</mat-label>
+                <input matInput name="password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+              </mat-form-field>
+
+
+              <button type="submit" mat-raised-button color="primary">Login</button>
+
+        </form>
+    </mat-card>
+    </div>
+</section>
