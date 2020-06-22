@@ -74,12 +74,12 @@ export class RegisterComponent implements OnInit {
       this.registerService.register(this.regForm.getRawValue()).subscribe((res: any) => {
           this.sucessmessage = res.message;
           this._snackBar.open(res.message, 'OK', {
-            duration: 2000,
+            duration: 4000,
           });      
       }, (error) => {
         this.errormessage = error.message;
         this._snackBar.open(error.message, 'OK', {
-          duration: 2000,
+          duration: 4000,
         });
       });
     }
