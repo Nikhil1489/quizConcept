@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../models/user';
 import { registerService } from 'src/app/services/register';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -72,12 +71,10 @@ export class RegisterComponent implements OnInit {
     this.markFormGroupTouched(this.regForm);
     if (this.regForm.valid) {
       this.registerService.register(this.regForm.getRawValue()).subscribe((res: any) => {
-          this.sucessmessage = res.message;
-          this._snackBar.open(res.message, 'OK', {
-            duration: 4000,
-          });      
+        this._snackBar.open(res.message, 'OK', {
+          duration: 4000,
+        });
       }, (error) => {
-        this.errormessage = error.message;
         this._snackBar.open(error.message, 'OK', {
           duration: 4000,
         });

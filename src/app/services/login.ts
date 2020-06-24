@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class registerService {
+export class loginService {
 
   constructor(private http: HttpClient) { }
 
@@ -14,7 +14,7 @@ export class registerService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     const options = { headers };
-    return this.http.post<any>('http://devserver.buzz/users/register', formdata, options);
+    return this.http.post<any>('http://devserver.buzz/users/login', formdata, options);
   }
 
 
