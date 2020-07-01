@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../models/user';
 import { registerService } from 'src/app/services/register';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface Dropdown {
   value: string;
@@ -23,7 +23,10 @@ export class RegisterComponent implements OnInit {
   locations: Dropdown[] = [
     { value: 'us', viewValue: 'United States' },
     { value: 'china', viewValue: 'China' },
-    { value: 'india', viewValue: 'India' }
+    { value: 'india', viewValue: 'India' },
+    { value: 'portugal', viewValue: 'Portugal' },
+    { value: 'romania', viewValue: 'Romania' }
+
   ];
 
   selectedLocation = this.locations[0].value;
@@ -41,7 +44,7 @@ export class RegisterComponent implements OnInit {
   sucessmessage: string = null;
   errormessage: string = null;
 
-  constructor(private fb: FormBuilder, private registerService: registerService) {
+  constructor(private fb: FormBuilder, private registerService: registerService, private _snackBar: MatSnackBar) {
 
     this.regForm = this.fb.group({
       'name': [null, Validators.required],
@@ -71,11 +74,13 @@ export class RegisterComponent implements OnInit {
     this.markFormGroupTouched(this.regForm);
     if (this.regForm.valid) {
       this.registerService.register(this.regForm.getRawValue()).subscribe((res: any) => {
-        if (res.messsage) {
-          this.sucessmessage = res.message;
-        }
+        this._snackBar.open(res.message, 'OK', {
+          duration: 4000,
+        });
       }, (error) => {
-        this.errormessage = error.message;
+        this._snackBar.open(error.message, 'OK', {
+          duration: 4000,
+        });
       });
     }
 

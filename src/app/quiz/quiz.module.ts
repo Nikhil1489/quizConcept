@@ -9,11 +9,13 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { FailureComponent } from './failure/failure.component';
 import { SuccessComponent } from './success/success.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 
 @NgModule({
   declarations: [StartComponent, QuestionComponent, ThankyouComponent, InstructionsComponent, FailureComponent,
-  SuccessComponent],
+    SuccessComponent,
+    QuestionsComponent],
   imports: [
     CommonModule,
     QuizRoutingModule,

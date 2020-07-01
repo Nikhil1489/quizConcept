@@ -10,13 +10,10 @@ export class registerService {
 
 
   register(formdata) {
-
     const data = JSON.stringify(formdata);
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-   // headers = headers.append( 'Access-Control-Allow-Origin', '');
     const options = { headers };
-  
     return this.http.post<any>('http://devserver.buzz/users/register', formdata, options);
   }
 
