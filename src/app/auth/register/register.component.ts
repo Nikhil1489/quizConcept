@@ -23,7 +23,10 @@ export class RegisterComponent implements OnInit {
   locations: Dropdown[] = [
     { value: 'us', viewValue: 'United States' },
     { value: 'china', viewValue: 'China' },
-    { value: 'india', viewValue: 'India' }
+    { value: 'india', viewValue: 'India' },
+    { value: 'portugal', viewValue: 'Portugal' },
+    { value: 'romania', viewValue: 'Romania' }
+
   ];
 
   selectedLocation = this.locations[0].value;

@@ -16,7 +16,7 @@ export class SuccessComponent implements OnInit {
 
   close(){
     this.dialogRef.close();
-    this.router.navigateByUrl('thankyou');
+   // this.router.navigateByUrl('thankyou');
   }
 
 }
