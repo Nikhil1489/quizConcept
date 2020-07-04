@@ -11,13 +11,16 @@ export class HeaderComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.length == 0)
+    {
+     this.router.navigateByUrl('login');
+    }
   }
 
   logout(){
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('id');
-    console.log(sessionStorage);
     this.router.navigateByUrl('login');
 }
 
