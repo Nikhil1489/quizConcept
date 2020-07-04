@@ -31,9 +31,9 @@ export class QuestionComponent implements OnInit {
    this.currentQuestion =  question.id;
    if(answer === this.question.correct_answer){
     let formData = { 
-      'currentQuestion': this.currentQuestion,
-      'currentUser':  sessionStorage.getItem('id'),
-      'answer': answer
+      'qstnid': this.currentQuestion,
+      'userid':  sessionStorage.getItem('id'),
+      'answertxt': answer
     }
     this.answerService.submitAnswer(formData).subscribe((res: any) => {
       
