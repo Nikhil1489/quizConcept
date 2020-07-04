@@ -3,6 +3,8 @@ import { SuccessComponent } from '../success/success.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FailureComponent } from '../failure/failure.component';
 import { Question } from '../question';
+import { answerService } from 'src/app/services/answer';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-question',
@@ -12,8 +14,9 @@ import { Question } from '../question';
 export class QuestionComponent implements OnInit {
 
   @Input() question: any;
+  currentQuestion: number;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private answerService: answerService, private _snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -24,9 +27,26 @@ export class QuestionComponent implements OnInit {
     });
   }
 
-  check_answer(answer){
+  check_answer(question, answer){
+   this.currentQuestion =  question.id;
    if(answer === this.question.correct_answer){
-     this.success();
+    let formData = { 
+      'currentQuestion': this.currentQuestion,
+      'currentUser':  sessionStorage.getItem('id'),
+      'answer': answer
+    }
+    this.answerService.submitAnswer(formData).subscribe((res: any) => {
+      
+      if(res.result == 1)
+      {
+        this.success();
+      }
+
+    }, (error) => {
+      this._snackBar.open(error.message, 'OK', {
+        duration: 4000,
+      });
+    });
    }
    else{
      this.failure();

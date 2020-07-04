@@ -22,7 +22,12 @@ export class QuestionsComponent implements OnInit {
   }
 
   getQuestions(){
-      this.questionsService.getQuestions().subscribe((res: any) => {
+    let formdata = {
+      'currentQuestion': '',
+      'currentUser':  sessionStorage.getItem('id'),
+      'answer': ''
+    }
+      this.questionsService.getQuestions(formdata).subscribe((res: any) => {
         if(res.result == 1){
           if(res.posts.length > 0){
             this.questions = res.posts

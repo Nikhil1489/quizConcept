@@ -2,9 +2,9 @@
 <div class="question">
         <h2>{{question.title}}</h2>
     <div class="answers">
-        <div><button mat-raised-button (click)="check_answer(question.q_option1)"><span class="option_tag">A</span>{{question.q_option1}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question.q_option2)"><span class="option_tag">B</span>{{question.q_option2}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question.q_option3)"><span class="option_tag">C</span>{{question.q_option3}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question.q_option4)"><span class="option_tag">D</span>{{question.q_option4}}</button></div>
+        <div><button mat-raised-button (click)="check_answer(question, question.q_option1)"><span class="option_tag">A</span>{{question.q_option1}}</button></div>
+        <div><button mat-raised-button (click)="check_answer(question, question.q_option2)"><span class="option_tag">B</span>{{question.q_option2}}</button></div>
+        <div><button mat-raised-button (click)="check_answer(question, question.q_option3)"><span class="option_tag">C</span>{{question.q_option3}}</button></div>
+        <div><button mat-raised-button (click)="check_answer(question, question.q_option4)"><span class="option_tag">D</span>{{question.q_option4}}</button></div>
     </div>
 </div>
