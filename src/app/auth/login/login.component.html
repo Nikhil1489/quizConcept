@@ -4,11 +4,11 @@
             <form novalidate [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="off">
                 <mat-form-field appearance="outline" class="example-full-width">
                     <mat-label>Your Email</mat-label>
-                    <input matInput type="email" formControlName="email" autocomplete="new-email">
-                    <mat-error *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
+                    <input matInput type="email" formControlName="username" autocomplete="new-email">
+                    <mat-error *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched">
                       Please enter email</mat-error>
                     <mat-error
-                      *ngIf="loginForm.get('email').hasError('email') && (loginForm.get('email').dirty && loginForm.controls['email'].value.length)">
+                      *ngIf="loginForm.get('username').hasError('username') && (loginForm.get('username').dirty && loginForm.controls['username'].value.length)">
                       Please enter valid email</mat-error>
                   </mat-form-field>
 

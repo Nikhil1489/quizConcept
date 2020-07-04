@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private _snackBar: MatSnackBar) {
 
     this.loginForm = this.formbuilder.group({
-      'email': [null, [Validators.required, Validators.email]],
+      'username': [null, [Validators.required, Validators.email]],
       'password': [null, Validators.required],
     })
 
@@ -42,10 +42,12 @@ export class LoginComponent implements OnInit {
     this.markFormGroupTouched(this.loginForm);
     if (this.loginForm.valid) {
       this.loginService.register(this.loginForm.getRawValue()).subscribe((res: any) => {
+        console.log(res);
         this._snackBar.open(res.message, 'OK', {
           duration: 4000,
         });
       }, (error) => {
+        console.log(error);
         this._snackBar.open(error.message, 'OK', {
           duration: 4000,
         });

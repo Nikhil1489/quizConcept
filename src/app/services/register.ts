@@ -14,7 +14,7 @@ export class registerService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     const options = { headers };
-    return this.http.post<any>('http://devserver.buzz/users/register', formdata, options);
+    return this.http.post<any>('https://devserver.buzz/users/register', formdata, options);
   }
 
 
