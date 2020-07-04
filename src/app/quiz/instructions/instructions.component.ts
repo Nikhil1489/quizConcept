@@ -13,7 +13,7 @@ export class InstructionsComponent implements OnInit {
     this.time = new Date();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
   }
 

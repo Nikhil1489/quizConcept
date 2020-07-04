@@ -18,8 +18,4 @@ export class QuestionsComponent implements OnInit {
   }
 
 
-  go_back(){
-    window.history.back();
-  }
-
 }

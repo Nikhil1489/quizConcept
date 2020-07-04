@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { loginService } from 'src/app/services/login';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   password: any;
 
   constructor(private formbuilder: FormBuilder, private loginService: loginService,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar, private router: Router) {
 
     this.loginForm = this.formbuilder.group({
       'username': [null, [Validators.required, Validators.email]],
@@ -36,18 +37,30 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(sessionStorage.length != 0)
+    {
+     this.router.navigateByUrl('instructions');
+    }
   }
 
   login() {
     this.markFormGroupTouched(this.loginForm);
     if (this.loginForm.valid) {
       this.loginService.register(this.loginForm.getRawValue()).subscribe((res: any) => {
-        console.log(res);
-        this._snackBar.open(res.message, 'OK', {
-          duration: 4000,
-        });
+        console.log('success', res);
+        if (res.result === 1) {
+          sessionStorage.setItem('email', res.user_data.email);
+          sessionStorage.setItem('id', res.user_data.user_id);
+          sessionStorage.setItem('username', res.user_data.username);
+          this.router.navigateByUrl('instructions');
+        }
+        else {
+          this._snackBar.open(res.message, 'OK', {
+            duration: 4000,
+          });
+        }
       }, (error) => {
-        console.log(error);
+        console.log('error', error);
         this._snackBar.open(error.message, 'OK', {
           duration: 4000,
         });
