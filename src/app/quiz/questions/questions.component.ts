@@ -11,6 +11,9 @@ import { questionsService } from 'src/app/services/questions';
 export class QuestionsComponent implements OnInit {
 
   questions:any[];
+  timeLeft: number = 180;
+  interval;
+  items: any;
 
   constructor(private questionsService:questionsService) {
 
@@ -19,6 +22,20 @@ export class QuestionsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 0;
+      }
+    },1000)
+
+  }
+
+  newQuestion(newQuestion: any) {
+    console.log(newQuestion);
+    this.questions = newQuestion.posts;
   }
 
   getQuestions(){
@@ -31,7 +48,7 @@ export class QuestionsComponent implements OnInit {
         if(res.result == 1){
           if(res.posts.length > 0){
             this.questions = res.posts
-            console.log(this.questions);
+           // console.log(this.questions);
           }
         }
       }, (error) => {
