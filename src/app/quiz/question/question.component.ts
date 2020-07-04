@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SuccessComponent } from '../success/success.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FailureComponent } from '../failure/failure.component';
@@ -14,6 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class QuestionComponent implements OnInit {
 
   @Input() question: any;
+  @Output() newQuestionEvent = new EventEmitter<string>();
+
   currentQuestion: number;
 
   constructor(public dialog: MatDialog, private answerService: answerService, private _snackBar:MatSnackBar) { }
@@ -37,10 +39,12 @@ export class QuestionComponent implements OnInit {
     }
     this.answerService.submitAnswer(formData).subscribe((res: any) => {
       
-      if(res.result == 1)
-      {
-        this.success();
-      }
+    this.newQuestionEvent.emit(res);
+
+      // if(res.result == 1)
+      // {
+      //   this.success();
+      // }
 
     }, (error) => {
       this._snackBar.open(error.message, 'OK', {
