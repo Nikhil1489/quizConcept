@@ -1,7 +1,2 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-    <mat-toolbar-row>
-        <button mat-icon-button (click)="go_back()"><mat-icon>arrow_back</mat-icon></button>
-        <!-- <div class="title">Question 1</div> -->
-    </mat-toolbar-row>
-</mat-toolbar>
+<app-header></app-header>
 <app-question *ngFor="let question of questions" [question]="question"></app-question>
