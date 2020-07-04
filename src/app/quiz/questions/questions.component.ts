@@ -23,9 +23,9 @@ export class QuestionsComponent implements OnInit {
 
   getQuestions(){
     let formdata = {
-      'currentQuestion': '',
-      'currentUser':  sessionStorage.getItem('id'),
-      'answer': ''
+      'qstnid': '',
+      'userid':  sessionStorage.getItem('id'),
+      'answertxt': ''
     }
       this.questionsService.getQuestions(formdata).subscribe((res: any) => {
         if(res.result == 1){
