@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QUESTIONS, Question } from './../question';
+import { questionsService } from 'src/app/services/questions';
 
 
 
@@ -10,11 +10,28 @@ import { QUESTIONS, Question } from './../question';
 })
 export class QuestionsComponent implements OnInit {
 
-  questions:Question[] = QUESTIONS;
+  questions:any[];
 
-  constructor() { }
+  constructor(private questionsService:questionsService) {
+
+    this.getQuestions();
+
+   }
 
   ngOnInit(): void {
+  }
+
+  getQuestions(){
+      this.questionsService.getQuestions().subscribe((res: any) => {
+        if(res.result == 1){
+          if(res.posts.length > 0){
+            this.questions = res.posts
+            console.log(this.questions);
+          }
+        }
+      }, (error) => {
+        console.log(error);
+      });
   }
 
 

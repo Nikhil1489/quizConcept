@@ -11,7 +11,7 @@ import { Question } from '../question';
 })
 export class QuestionComponent implements OnInit {
 
-  @Input() question: Question;
+  @Input() question: any;
 
   constructor(public dialog: MatDialog) { }
 
@@ -25,7 +25,7 @@ export class QuestionComponent implements OnInit {
   }
 
   check_answer(answer){
-   if(answer === this.question.correctAnswer){
+   if(answer === this.question.correct_answer){
      this.success();
    }
    else{

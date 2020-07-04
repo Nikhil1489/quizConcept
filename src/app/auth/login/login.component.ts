@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
     this.markFormGroupTouched(this.loginForm);
     if (this.loginForm.valid) {
       this.loginService.register(this.loginForm.getRawValue()).subscribe((res: any) => {
-        console.log('success', res);
         if (res.result === 1) {
           sessionStorage.setItem('email', res.user_data.email);
           sessionStorage.setItem('id', res.user_data.user_id);
@@ -60,7 +59,6 @@ export class LoginComponent implements OnInit {
           });
         }
       }, (error) => {
-        console.log('error', error);
         this._snackBar.open(error.message, 'OK', {
           duration: 4000,
         });
