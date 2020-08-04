@@ -16,51 +16,93 @@ export class QuestionComponent implements OnInit {
   @Input() question: any;
   @Output() newQuestionEvent = new EventEmitter<string>();
 
-  currentQuestion: number;
+  currentQuestion: any;
 
-  constructor(public dialog: MatDialog, private answerService: answerService, private _snackBar:MatSnackBar) { }
+  constructor(public dialog: MatDialog, private answerService: answerService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
-  success(){
-    const dialogRef = this.dialog.open(SuccessComponent, {
-      disableClose: true
-    });
-  }
+  check_answer(question, answer) {
+    this.currentQuestion = question;
 
-  check_answer(question, answer){
-   this.currentQuestion =  question.id;
-   if(answer === this.question.correct_answer){
-    let formData = { 
-      'qstnid': this.currentQuestion,
-      'userid':  sessionStorage.getItem('id'),
-      'answertxt': answer
-    }
-    this.answerService.submitAnswer(formData).subscribe((res: any) => {
+      let formData = {
+        'question_no': this.currentQuestion.question_no,
+        'question_id': this.currentQuestion.question_id,
+        'answer_no': answer,
+        "level": this.currentQuestion.level,
+        'userid': sessionStorage.getItem('id'),
+      }
       
-    this.newQuestionEvent.emit(res);
+      sessionStorage.setItem('question_no', this.currentQuestion.question_no);
+      sessionStorage.setItem('question_id', this.currentQuestion.question_id);
 
-      // if(res.result == 1)
-      // {
-      //   this.success();
-      // }
 
-    }, (error) => {
-      this._snackBar.open(error.message, 'OK', {
-        duration: 4000,
+      this.answerService.submitAnswer(formData).subscribe((res: any) => {
+        if (res.result == 1) {
+          this.newQuestionEvent.emit(res);
+        }
+
+      }, (error) => {
+        this._snackBar.open(error.message, 'OK', {
+          duration: 4000,
+        });
       });
-    });
-   }
-   else{
-     this.failure();
-   }
-  }
-
-  failure(){
-    const dialogRef = this.dialog.open(FailureComponent, {
-      disableClose: true
-    });
   }
 
 }
+
+
+//old code
+
+
+    // if (answer === this.question.correct_answer) {
+    //   let formData = {
+    //     'question_no': this.currentQuestion,
+    //     'answer_no': answer,
+    //     'userid': sessionStorage.getItem('id'),
+    //   }
+
+
+    //   this.answerService.submitAnswer(formData).subscribe((res: any) => {
+    //     if (res.result == 1) {
+    //       const dialogRef = this.dialog.open(SuccessComponent, {
+    //         disableClose: true
+    //       });
+
+    //       dialogRef.afterClosed().subscribe(result => {
+    //         this.newQuestionEvent.emit(res);
+    //       });
+
+    //     }
+
+    //   }, (error) => {
+    //     this._snackBar.open(error.message, 'OK', {
+    //       duration: 4000,
+    //     });
+    //   });
+    // }
+    // else {
+    //   let formData = {
+    //     'qstnid': this.currentQuestion,
+    //     'userid': sessionStorage.getItem('id'),
+    //     'answertxt': answer
+    //   }
+    //   this.answerService.submitAnswer(formData).subscribe((res: any) => {
+    //     if (res.result == 1) {
+    //       const dialogRef = this.dialog.open(FailureComponent, {
+    //         disableClose: true
+    //       });
+
+    //       dialogRef.afterClosed().subscribe(result => {
+    //         this.newQuestionEvent.emit(res);
+    //       });
+
+    //     }
+
+    //   }, (error) => {
+    //     this._snackBar.open(error.message, 'OK', {
+    //       duration: 4000,
+    //     });
+    //   });
+    // }
