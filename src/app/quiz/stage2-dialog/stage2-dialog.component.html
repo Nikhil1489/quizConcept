@@ -1,0 +1,17 @@
+<form novalidate [formGroup]="doubleForm" (ngSubmit)="is_double()" autocomplete="off">
+    <h2>Do you wish to double the score for next stage?</h2>
+    <p>For each correct answer you will be awarded double marks, for each wrong answer there will be a negative mark </p>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-radio-group aria-label="Select an option" formControlName="isdouble" [(ngModel)]="selectedDouble">
+                <mat-radio-button color="primary" value="yes" [checked]="true">Yes</mat-radio-button>
+                <mat-radio-button color="primary" value="no">No</mat-radio-button>
+              </mat-radio-group>        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+      <button class="submit_btn" type="submit" mat-raised-button color="primary">Submit</button>
+      </div></div>
+</form>

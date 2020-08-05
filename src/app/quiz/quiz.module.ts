@@ -11,17 +11,24 @@ import { FailureComponent } from './failure/failure.component';
 import { SuccessComponent } from './success/success.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { HeaderComponent } from './header/header.component';
+import { Stage2DialogComponent } from './stage2-dialog/stage2-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Stage3DialogComponent } from './stage3-dialog/stage3-dialog.component';
 
 
 @NgModule({
   declarations: [StartComponent, QuestionComponent, ThankyouComponent, InstructionsComponent, FailureComponent,
     SuccessComponent,
     QuestionsComponent,
-    HeaderComponent],
+    HeaderComponent,
+    Stage2DialogComponent,
+    Stage3DialogComponent],
   imports: [
     CommonModule,
+    FormsModule,
     QuizRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class QuizModule { }
