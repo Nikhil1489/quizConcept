@@ -65,6 +65,7 @@ export class QuestionsComponent implements OnInit {
       'answer_no': 'e',
       'level':1,
       'userid': sessionStorage.getItem('id'),
+      'is_double': sessionStorage.getItem('is_double'),
     }
     this.questionsService.getQuestions(formdata).subscribe((res: any) => {
       if (res.result === 1) {

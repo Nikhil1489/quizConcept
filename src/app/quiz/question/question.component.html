@@ -1,5 +1,5 @@
 
-<div class="question">
+<div class="question" *ngIf="showQuestion">
         <h2>{{question.question}}</h2>
     <div class="answers">
         <div><button mat-raised-button (click)="check_answer(question, 'a')"><span class="option_tag">A</span>{{question.option_a}}</button></div>
