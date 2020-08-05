@@ -8,6 +8,7 @@ export interface Question {
     optionC: string;
     optionD: string;
     correctAnswer: string;
+    level:number;
   }
   export const QUESTIONS: Question[] = [
     {
@@ -19,6 +20,7 @@ export interface Question {
     optionB: "Meerut", 
     optionC: "Lucknow", 
     optionD: "Kanpur",
+    level: 1,
     correctAnswer: "Lucknow"},
     {
       id: 2, 
@@ -29,5 +31,6 @@ export interface Question {
       optionB: "Newyork", 
       optionC: "Berlin", 
       optionD: "Moscow",
+      level: 1,
       correctAnswer: "London"}
   ];
