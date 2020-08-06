@@ -1,8 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SuccessComponent } from '../success/success.component';
 import { MatDialog } from '@angular/material/dialog';
-import { FailureComponent } from '../failure/failure.component';
-import { Question } from '../question';
 import { answerService } from 'src/app/services/answer';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Stage2DialogComponent } from '../stage2-dialog/stage2-dialog.component';
@@ -20,11 +17,17 @@ export class QuestionComponent implements OnInit {
 
   currentQuestion: any;
   showQuestion: boolean = true;
+  answer: any;
 
   constructor(public dialog: MatDialog, private answerService: answerService, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
+
+    setTimeout(() => {                           
+      this.skip();
+    }, 10000);
+
     this.stagetwoStart();
     this.stageThreeStart();
     this.quiz_end();
@@ -32,7 +35,7 @@ export class QuestionComponent implements OnInit {
 
   check_answer(question, answer) {
     this.currentQuestion = question;
-
+    this.answer = answer;
     let formData = {
       'question_no': this.currentQuestion.question_no,
       'question_id': this.currentQuestion.question_id,
@@ -44,13 +47,12 @@ export class QuestionComponent implements OnInit {
 
     sessionStorage.setItem('question_no', this.currentQuestion.question_no);
     sessionStorage.setItem('question_id', this.currentQuestion.question_id);
-
+    sessionStorage.setItem('current_level', this.currentQuestion.level);
 
     this.answerService.submitAnswer(formData).subscribe((res: any) => {
       if (res.result == 1) {
         this.newQuestionEvent.emit(res);
       }
-
     }, (error) => {
       this._snackBar.open(error.message, 'OK', {
         duration: 4000,
@@ -72,7 +74,7 @@ export class QuestionComponent implements OnInit {
 
         });
       }
-      else{
+      else {
         return;
       }
     }
@@ -99,6 +101,36 @@ export class QuestionComponent implements OnInit {
     if (parseInt(sessionStorage.getItem('question_no')) >= 35) {
       this.showQuestion = false;
     }
+  }
+
+  skip() {
+    
+    let formData = {
+      'question_no': sessionStorage.getItem('question_no'),
+      'question_id': sessionStorage.getItem('question_id'),
+      'answer_no': 'e',
+      "level": sessionStorage.getItem("current_level"),
+      'userid': sessionStorage.getItem('id'),
+      'is_double': sessionStorage.getItem('is_double'),
+    }
+    this.answerService.submitAnswer(formData).subscribe((res: any) => {
+      if (res.result == 1) {
+        this.newQuestionEvent.emit(res);
+
+        sessionStorage.setItem('question_no', res.posts[0].question_no);
+        sessionStorage.setItem('question_id', res.posts[0].question_id);
+        sessionStorage.setItem('current_level', res.posts[0].level);
+
+        console.log(res);
+
+      }
+    }, (error) => {
+      this._snackBar.open(error.message, 'OK', {
+        duration: 4000,
+      });
+    });
+
+
   }
 
 }

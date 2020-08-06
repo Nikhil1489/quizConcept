@@ -23,6 +23,9 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('id');
     sessionStorage.removeItem('question_no');
     sessionStorage.removeItem('question_id');
+    sessionStorage.removeItem('current_level');
+    sessionStorage.removeItem('is_double');
+    sessionStorage.removeItem('is_stage2started');
     this.router.navigateByUrl('login');
 }
 
