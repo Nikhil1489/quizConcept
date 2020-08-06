@@ -84,7 +84,6 @@ export class QuestionsComponent implements OnInit {
           sessionStorage.setItem('question_no', res.posts[0].question_no);
           sessionStorage.setItem('question_id', res.posts[0].question_id);
           sessionStorage.setItem('current_level', res.posts[0].level);
-          
         }
       }
     }, (error) => {

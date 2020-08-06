@@ -17,19 +17,46 @@ export class QuestionComponent implements OnInit {
 
   currentQuestion: any;
   showQuestion: boolean = true;
-  answer: any;
+  answer: any
+  session_question_number : any;
 
   constructor(public dialog: MatDialog, private answerService: answerService, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
 
-    setTimeout(() => {                           
-      this.skip();
-    }, 10000);
+    this.session_question_number = parseInt(sessionStorage.getItem('question_no'));
 
-    this.stagetwoStart();
-    this.stageThreeStart();
+    if(this.session_question_number <= 20)
+    {
+      setTimeout(() => {
+        this.skip();
+      }, 2000);
+    }
+    else if(this.session_question_number === 21)
+    {
+      this.showQuestion = false;
+      this.stagetwoStart();
+    }
+    else if(this.session_question_number >= 22 && this.session_question_number <= 30)
+    {
+      setTimeout(() => {
+        this.skip();
+      }, 3000);
+    }
+    else if(this.session_question_number == 31)
+    {
+      this.showQuestion = false;
+      this.stageThreeStart();
+    }
+    else if(this.session_question_number >= 32 && this.session_question_number <= 35)
+    {
+      setTimeout(() => {
+        this.skip();
+      }, 4000);
+    }
+
+    //this.stageThreeStart();
     this.quiz_end();
   }
 
@@ -44,10 +71,9 @@ export class QuestionComponent implements OnInit {
       'userid': sessionStorage.getItem('id'),
       'is_double': sessionStorage.getItem('is_double'),
     }
-
-    sessionStorage.setItem('question_no', this.currentQuestion.question_no);
-    sessionStorage.setItem('question_id', this.currentQuestion.question_id);
-    sessionStorage.setItem('current_level', this.currentQuestion.level);
+    // sessionStorage.setItem('question_no', this.currentQuestion.question_no);
+    // sessionStorage.setItem('question_id', this.currentQuestion.question_id);
+    // sessionStorage.setItem('current_level', this.currentQuestion.level);
 
     this.answerService.submitAnswer(formData).subscribe((res: any) => {
       if (res.result == 1) {
@@ -61,27 +87,26 @@ export class QuestionComponent implements OnInit {
   }
 
   stagetwoStart() {
-    if (parseInt(sessionStorage.getItem('question_no')) === 20) {
-      if (sessionStorage.getItem('is_stage3started') == null) {
-        this.showQuestion = false;
+      if (sessionStorage.getItem('is_stage2started') == null) {
         const dialogRef = this.dialog.open(Stage2DialogComponent, {
           disableClose: true
         });
-
         dialogRef.afterClosed().subscribe(result => {
-
           this.showQuestion = true;
+
+          setTimeout(() => {
+            this.skip();
+          }, 3000);
 
         });
       }
       else {
         return;
       }
-    }
   }
 
   stageThreeStart() {
-    if (parseInt(sessionStorage.getItem('question_no')) === 30) {
+    if (parseInt(sessionStorage.getItem('question_no')) === 31) {
       if (sessionStorage.getItem('is_stage3started') == null) {
         this.showQuestion = false;
         const dialogRef = this.dialog.open(Stage3DialogComponent, {
@@ -89,6 +114,9 @@ export class QuestionComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
           this.showQuestion = true;
+          setTimeout(() => {
+            this.skip();
+          }, 4000);
         });
       }
       else {
@@ -98,41 +126,37 @@ export class QuestionComponent implements OnInit {
   }
 
   quiz_end() {
-    if (parseInt(sessionStorage.getItem('question_no')) >= 35) {
+    if (parseInt(sessionStorage.getItem('question_no')) === 36) {
       this.showQuestion = false;
     }
   }
 
   skip() {
-    
-    let formData = {
-      'question_no': sessionStorage.getItem('question_no'),
-      'question_id': sessionStorage.getItem('question_id'),
-      'answer_no': 'e',
-      "level": sessionStorage.getItem("current_level"),
-      'userid': sessionStorage.getItem('id'),
-      'is_double': sessionStorage.getItem('is_double'),
-    }
-    this.answerService.submitAnswer(formData).subscribe((res: any) => {
-      if (res.result == 1) {
-        this.newQuestionEvent.emit(res);
 
-        sessionStorage.setItem('question_no', res.posts[0].question_no);
-        sessionStorage.setItem('question_id', res.posts[0].question_id);
-        sessionStorage.setItem('current_level', res.posts[0].level);
-
-        console.log(res);
-
+      let formData = {
+        'question_no': sessionStorage.getItem('question_no'),
+        'question_id': sessionStorage.getItem('question_id'),
+        'answer_no': 'e',
+        "level": sessionStorage.getItem("current_level"),
+        'userid': sessionStorage.getItem('id'),
+        'is_double': sessionStorage.getItem('is_double'),
       }
-    }, (error) => {
-      this._snackBar.open(error.message, 'OK', {
-        duration: 4000,
+      this.answerService.submitAnswer(formData).subscribe((res: any) => {
+        if (res.result == 1) {
+          this.newQuestionEvent.emit(res);
+
+          sessionStorage.setItem('question_no', res.posts[0].question_no);
+          sessionStorage.setItem('question_id', res.posts[0].question_id);
+          sessionStorage.setItem('current_level', res.posts[0].level);
+
+
+        }
+      }, (error) => {
+        this._snackBar.open(error.message, 'OK', {
+          duration: 4000,
+        });
       });
-    });
-
-
   }
-
 }
 
 
