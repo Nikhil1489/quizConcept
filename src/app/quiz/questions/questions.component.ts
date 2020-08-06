@@ -16,7 +16,7 @@ export class QuestionsComponent implements OnInit {
   items: any;
   totalTime: any;
   displayTime: any;
-  showQuestions: boolean;
+  showQuestions: boolean = true;
   totalDisplayTime:any;
 
   constructor(private questionsService: questionsService) {
@@ -31,6 +31,9 @@ export class QuestionsComponent implements OnInit {
 
   newQuestion(newQuestion: any) {
     this.questions = newQuestion.posts;
+    if(newQuestion.end_quiz === 1){
+      this.showQuestions = false;
+    }
   }
 
   getQuestions() {

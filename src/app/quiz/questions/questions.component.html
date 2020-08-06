@@ -1,9 +1,8 @@
 <app-header></app-header>
 <div class="timer">{{displayTime}} / {{totalDisplayTime}}</div>
-<div>
+<div *ngIf="showQuestions">
 <app-question (newQuestionEvent)="newQuestion($event)" *ngFor="let question of questions" [question]="question"></app-question>
 </div>
-<!-- <div class="quiz_over" *ngIf="!showQuestions"> 
+<div class="quiz_over" *ngIf="!showQuestions"> 
     Quiz is Over
 </div>
--->
