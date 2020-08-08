@@ -11,7 +11,7 @@ import { questionsService } from 'src/app/services/questions';
 export class QuestionsComponent implements OnInit {
 
   questions: any[];
-  timeLeft: any = 0;
+  timeLeft: any = 180;
   interval;
   items: any;
   totalTime: any;
@@ -81,9 +81,9 @@ export class QuestionsComponent implements OnInit {
       if (res.result === 1) {
         if (res.posts.length > 0) {
           this.questions = res.posts;
-          sessionStorage.setItem('question_no', res.posts[0].question_no);
-          sessionStorage.setItem('question_id', res.posts[0].question_id);
-          sessionStorage.setItem('current_level', res.posts[0].level);
+          //sessionStorage.setItem('question_no', res.posts[0].question_no);
+          //sessionStorage.setItem('question_id', res.posts[0].question_id);
+          //sessionStorage.setItem('current_level', res.posts[0].level);
         }
       }
     }, (error) => {
@@ -92,27 +92,3 @@ export class QuestionsComponent implements OnInit {
   }
 
 }
-
-//old colde
-
-        // if (res.posts.length > 0) {
-        //   this.questions = res.posts;
-        //   console.log(res.fynmins);
-        //   if (res.fynmins !== "-1") {
-        //     this.showQuestions = true;
-        //     this.timeLeft = res.fynmins;
-        //     this.totalTime = res.totalmins;
-        //     this.totalDisplayTime = this.formatTime(this.totalTime);
-
-        //     this.interval = setInterval(() => {
-        //       if (this.timeLeft < this.totalTime) {
-        //         this.displayTime = this.timeLeft++;
-        //         this.displayTime = this.formatTime(this.displayTime);
-        //       } else {
-        //         this.timeLeft = this.totalTime;
-        //       }
-        //     }, 1000)
-        //   } else {
-        //     this.showQuestions = false;
-        //   }
-        // }

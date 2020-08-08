@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.markFormGroupTouched(this.loginForm);
     if (this.loginForm.valid) {
-      this.loginService.register(this.loginForm.getRawValue()).subscribe((res: any) => {
+      this.loginService.login(this.loginForm.getRawValue()).subscribe((res: any) => {
         if (res.result === 1) {
           sessionStorage.setItem('email', res.user_data.email);
           sessionStorage.setItem('id', res.user_data.user_id);

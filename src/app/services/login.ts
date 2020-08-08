@@ -9,7 +9,7 @@ export class loginService {
   constructor(private http: HttpClient) { }
 
 
-  register(formdata) {
+  login(formdata) {
     const data = JSON.stringify(formdata);
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
