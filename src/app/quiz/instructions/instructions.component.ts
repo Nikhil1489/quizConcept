@@ -7,10 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructionsComponent implements OnInit {
 
-  time: Date;
-
   constructor() {
-    this.time = new Date();
   }
 
   ngOnInit() {

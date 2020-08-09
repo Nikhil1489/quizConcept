@@ -1,4 +1,137 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+
+$custom-typography: mat-typography-config(
+  $font-family: "Ubuntu, sans-serif",
+  $headline: mat-typography-level(24px, 48px, 400),
+  $body-1: mat-typography-level(16px, 24px, 400),
+  $button: mat-typography-level(16px, 24px, 400)
+);
+
+// @include mat-base-typography($custom-typography);
+// @include mat-checkbox-typography($custom-typography);
+// @include angular-material-typography($custom-typography);
+@include mat-core($custom-typography);
+
+
+
+$mat-blue: (
+  50: #e2f3ff,
+  100: #bae1ff,
+  200: #8acfff,
+  300: #51bbff,
+  400: #04abff,
+  500: #009cff,
+  600: #008dff,
+  700: #0079ff,
+  800: #0067ed,
+  900: #1844ce,
+  A100: #FFFFFF,
+  A200: #D4DCFF,
+  A400: #A1B3FF,
+  A700: #889EFF,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+
+$mat-dark-blue: (
+  50: #e3f1fb,
+  100: #badbf6,
+  200: #8fc5f0,
+  300: #65aeea,
+  400: #479de6,
+  500: #2b8de2,
+  600: #2780d5,
+  700: #216ec2,
+  800: #1c5eb0,
+  900: #124191,
+  A100: #93A7FF,
+  A200: #607DFF,
+  A400: #2D54FF,
+  A700: #143FFF,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+
+$mat-red: (
+  50: #feebee,
+  100: #fcccd1,
+  200: #eb9999,
+  300: #df7272,
+  400: #e9524f,
+  500: #ed4236,
+  600: #de3835,
+  700: #cc2f2f,
+  800: #bf2828,
+  900: #b01d1d,
+  A100: #FFCBCB,
+  A200: #FF9898,
+  A400: #FF6565,
+  A700: #FF4C4C,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+
+// Define the default theme (same as the example above).
+$candy-app-primary: mat-palette($mat-blue, 800);
+$candy-app-accent:  mat-palette($mat-dark-blue, 900);
+$candy-app-warn: mat-palette($mat-red, 800);
+
+$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+// Include the default theme styles.
+@include angular-material-theme($candy-app-theme);
+
+
 
 *{
 box-sizing: border-box;

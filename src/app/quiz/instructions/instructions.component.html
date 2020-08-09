@@ -2,9 +2,8 @@
 <div class="wrapper">
     <div class="container">
         <div class="main">
-            <mat-card>
+            <mat-card class="mat-elevation-z0">
                 <mat-card-title>Instructions To Take Quiz</mat-card-title>
-                <mat-card-subtitle>Time: {{time | date:'shortTime'}}</mat-card-subtitle>
                 <mat-card-content>
                     <p>This quiz consists of questions carefully designed to help you self-assess
                         your comprehension of the information on the topics covered.</p>
@@ -14,7 +13,7 @@
                         the questions.</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button routerLink="/questions" mat-flat-button color="accent">Start Quiz</button>
+                    <button class="start_btn" routerLink="/questions" mat-flat-button color="primary">Start Quiz</button>
                 </mat-card-actions>
             </mat-card>
         </div>

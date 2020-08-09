@@ -1,13 +1,33 @@
 .submit_btn{
-    margin: 20px 0 0;
+    margin: 1.25rem 0 0;
+    width: 100%;
+    height: 40px;
 }
 
 p{
-    margin: 0 0 20px;
+    margin: 0 0 1rem;
+    color: rgba(0,0,0,0.54);
 }
 
 mat-radio-group{
     mat-radio-button{
-        margin-right: 20px;
+        margin-right: 1.25rem;
     }
+}
+
+.level2_img{
+    margin: 1rem 0 0;
+}
+
+h4{
+    color: #0065ED;
+    font-weight: 400;
+    margin: 0 0 1rem;
+    padding: 0;
+}
+
+h2{
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
 }

@@ -2,10 +2,10 @@
 <div class="question" *ngIf="showQuestion">
         <h2>{{question.question_title}}</h2>
     <div class="answers">
-        <div><button mat-raised-button (click)="check_answer(question, 'a')"><span class="option_tag">A</span>{{question.option_a}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question, 'b')"><span class="option_tag">B</span>{{question.option_b}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question, 'c')"><span class="option_tag">C</span>{{question.option_c}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question, 'd')"><span class="option_tag">D</span>{{question.option_d}}</button></div>
-        <div><button color="accent" mat-raised-button (click)="check_answer(question, 'e')">SKIP</button></div>
+        <div><button mat-flat-button (click)="check_answer(question, 'a')"><span class="option_tag">A</span>{{question.option_a}}</button></div>
+        <div><button mat-flat-button (click)="check_answer(question, 'b')"><span class="option_tag">B</span>{{question.option_b}}</button></div>
+        <div><button mat-flat-button (click)="check_answer(question, 'c')"><span class="option_tag">C</span>{{question.option_c}}</button></div>
+        <div><button mat-flat-button (click)="check_answer(question, 'd')"><span class="option_tag">D</span>{{question.option_d}}</button></div>
+        <div class="skip_row"><button color="primary" class="skip_btn" mat-flat-button (click)="check_answer(question, 'e')">Skip Question</button></div>
     </div>
 </div>

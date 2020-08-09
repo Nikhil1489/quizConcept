@@ -1,6 +1,6 @@
 <section class="auth_page">
   <div class="login_Form">
-    <mat-card>
+    <div class="logo"><img src="../../../assets/logo.svg" alt=""></div>
       <h2>Register</h2>
       <form novalidate [formGroup]="regForm" (ngSubmit)="register()" autocomplete="off">
 
@@ -62,9 +62,10 @@
         </mat-form-field>
 
 
-        <button class="register_btn" type="submit" mat-raised-button color="primary">Register</button>
+        <button class="register_btn" type="submit" mat-flat-button color="primary">Register</button>
+        <button class="login_btn" type="button" mat-button routerLink="/login" color="primary">Login</button>
+
 
       </form>
-    </mat-card>
   </div>
 </section>

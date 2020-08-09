@@ -1,5 +1,8 @@
 <section class="auth_page">
         <div class="login_Form">
+          
+          <div class="logo"><img src="../../../assets/logo.svg" alt=""></div>
+
                 <h2>Login</h2>
             <form novalidate [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="off">
                 <mat-form-field appearance="outline" class="example-full-width">
@@ -18,13 +21,16 @@
                       formControlName="password">
                     <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                       [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      <mat-icon color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                     <mat-error *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
                       Please enter password</mat-error>
                   </mat-form-field>
 
-                  <button mat-raised-button color="primary">Login</button>
+                  <button mat-flat-button color="primary"  class="login_btn">Login</button>
+
+                  <button mat-button color="primary" class="register_btn" type="button" routerLink="/register">Register</button>
+
             </form>
         </div>
 </section>
