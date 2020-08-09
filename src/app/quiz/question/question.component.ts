@@ -18,7 +18,12 @@ export class QuestionComponent implements OnInit {
   currentQuestion: any;
   showQuestion: boolean = true;
   answer: any
-  session_question_number : any;
+  session_question_number: any;
+  is_answered: boolean = false;
+  skipQuestion: any;
+  timeLeft: number;
+  displayTime: number;
+  interval: any;
 
   constructor(public dialog: MatDialog, private answerService: answerService, private _snackBar: MatSnackBar) {
   }
@@ -27,33 +32,61 @@ export class QuestionComponent implements OnInit {
 
     this.session_question_number = parseInt(sessionStorage.getItem('question_no'));
 
-    if(this.session_question_number <= 20)
-    {
-      setTimeout(() => {
-        this.skip();
-      }, 2000);
+    if (this.session_question_number <= 20) {
+
+      this.timeLeft = 30;
+      this.interval = setInterval(() => {
+          if (this.timeLeft > 0) {
+            this.displayTime = this.timeLeft--;
+          } else {
+            this.displayTime = this.timeLeft = 0;
+          }
+      }, 1000)
+        
+     this.skipQuestion = setTimeout(() => {
+          this.skip();
+        }, 30000);
+ 
     }
-    else if(this.session_question_number === 21)
-    {
+    else if (this.session_question_number === 21) {
       this.showQuestion = false;
       this.stagetwoStart();
     }
-    else if(this.session_question_number >= 22 && this.session_question_number <= 30)
-    {
-      setTimeout(() => {
+    else if (this.session_question_number >= 22 && this.session_question_number <= 30) {
+
+      this.timeLeft = 60;
+      this.interval = setInterval(() => {
+          if (this.timeLeft > 0) {
+            this.displayTime = this.timeLeft--;
+          } else {
+            this.displayTime = this.timeLeft = 0;
+          }
+      }, 1000)
+      
+      this.skipQuestion = setTimeout(() => {
         this.skip();
-      }, 3000);
+      }, 60000);
+
     }
-    else if(this.session_question_number == 31)
-    {
+    else if (this.session_question_number == 31) {
       this.showQuestion = false;
       this.stageThreeStart();
     }
-    else if(this.session_question_number >= 32 && this.session_question_number <= 35)
-    {
-      setTimeout(() => {
+    else if (this.session_question_number >= 32 && this.session_question_number <= 35) {
+
+      this.timeLeft = 120;
+      this.interval = setInterval(() => {
+          if (this.timeLeft > 0) {
+            this.displayTime = this.timeLeft--;
+          } else {
+            this.displayTime = this.timeLeft = 0;
+          }
+      }, 1000)
+      
+      this.skipQuestion = setTimeout(() => {
         this.skip();
-      }, 4000);
+      }, 120000);
+
     }
 
     //this.stageThreeStart();
@@ -71,14 +104,36 @@ export class QuestionComponent implements OnInit {
       'userid': sessionStorage.getItem('id'),
       'is_double': sessionStorage.getItem('is_double'),
     }
-    // sessionStorage.setItem('question_no', this.currentQuestion.question_no);
-    // sessionStorage.setItem('question_id', this.currentQuestion.question_id);
-    // sessionStorage.setItem('current_level', this.currentQuestion.level);
+
+    this.is_answered = true;    
 
     this.answerService.submitAnswer(formData).subscribe((res: any) => {
-      if (res.result == 1) {
-        this.newQuestionEvent.emit(res);
-      }
+
+      clearTimeout(this.skipQuestion);
+
+      sessionStorage.setItem('question_no', res.posts[0].question_no);
+      sessionStorage.setItem('question_id', res.posts[0].question_id);
+      sessionStorage.setItem('current_level', res.posts[0].level);
+
+      this.newQuestionEvent.emit(res);
+
+
+      // if (res.result == 1) {
+
+      //   if (this.session_question_number === 21) {
+      //     this.showQuestion = false;
+      //     this.stagetwoStart();
+      //   }
+      //   else if (this.session_question_number == 31) {
+      //     this.showQuestion = false;
+      //     this.stageThreeStart();
+      //   }
+
+      //   this.is_answered = true;
+      //   this.newQuestionEvent.emit(res);
+
+      // }
+
     }, (error) => {
       this._snackBar.open(error.message, 'OK', {
         duration: 4000,
@@ -87,22 +142,31 @@ export class QuestionComponent implements OnInit {
   }
 
   stagetwoStart() {
-      if (sessionStorage.getItem('is_stage2started') == null) {
-        const dialogRef = this.dialog.open(Stage2DialogComponent, {
-          disableClose: true
-        });
-        dialogRef.afterClosed().subscribe(result => {
-          this.showQuestion = true;
+    if (sessionStorage.getItem('is_stage2started') == null) {
+      const dialogRef = this.dialog.open(Stage2DialogComponent, {
+        disableClose: true
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.showQuestion = true;
 
-          setTimeout(() => {
-            this.skip();
-          }, 3000);
+        this.timeLeft = 60;
+        this.interval = setInterval(() => {
+            if (this.timeLeft > 0) {
+              this.displayTime = this.timeLeft--;
+            } else {
+              this.displayTime = this.timeLeft = 0;
+            }
+        }, 1000)
 
-        });
-      }
-      else {
-        return;
-      }
+        this.skipQuestion = setTimeout(() => {
+          this.skip();
+        }, 60000);
+
+      });
+    }
+    else {
+      return;
+    }
   }
 
   stageThreeStart() {
@@ -114,9 +178,20 @@ export class QuestionComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
           this.showQuestion = true;
-          setTimeout(() => {
+
+          this.timeLeft = 120;
+          this.interval = setInterval(() => {
+              if (this.timeLeft > 0) {
+                this.displayTime = this.timeLeft--;
+              } else {
+                this.displayTime = this.timeLeft = 0;
+              }
+          }, 1000)
+          
+          this.skipQuestion = setTimeout(() => {
             this.skip();
-          }, 4000);
+          }, 12000);
+
         });
       }
       else {
@@ -133,29 +208,27 @@ export class QuestionComponent implements OnInit {
 
   skip() {
 
-      let formData = {
-        'question_no': sessionStorage.getItem('question_no'),
-        'question_id': sessionStorage.getItem('question_id'),
-        'answer_no': 'e',
-        "level": sessionStorage.getItem("current_level"),
-        'userid': sessionStorage.getItem('id'),
-        'is_double': sessionStorage.getItem('is_double'),
+    let formData = {
+      'question_no': sessionStorage.getItem('question_no'),
+      'question_id': sessionStorage.getItem('question_id'),
+      'answer_no': 'e',
+      "level": sessionStorage.getItem("current_level"),
+      'userid': sessionStorage.getItem('id'),
+      'is_double': sessionStorage.getItem('is_double'),
+    }
+    this.answerService.submitAnswer(formData).subscribe((res: any) => {
+      if (res.result == 1) {
+        clearTimeout(this.skipQuestion);
+        this.newQuestionEvent.emit(res);
+        sessionStorage.setItem('question_no', res.posts[0].question_no);
+        sessionStorage.setItem('question_id', res.posts[0].question_id);
+        sessionStorage.setItem('current_level', res.posts[0].level);
       }
-      this.answerService.submitAnswer(formData).subscribe((res: any) => {
-        if (res.result == 1) {
-          this.newQuestionEvent.emit(res);
-
-          sessionStorage.setItem('question_no', res.posts[0].question_no);
-          sessionStorage.setItem('question_id', res.posts[0].question_id);
-          sessionStorage.setItem('current_level', res.posts[0].level);
-
-
-        }
-      }, (error) => {
-        this._snackBar.open(error.message, 'OK', {
-          duration: 4000,
-        });
+    }, (error) => {
+      this._snackBar.open(error.message, 'OK', {
+        duration: 4000,
       });
+    });
   }
 }
 

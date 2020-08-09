@@ -1,16 +1,18 @@
 
 ::ng-deep body{
-    background: #f3f3f3;
+    background: #EDF2F5;
 }
 
 .container{
-    padding: 48px 16px 0;
+    padding: 4rem 1rem 0;
 }
 
 .main{
     max-width: 600px;
     margin: 0 auto;
 }
+
+
 mat-card-actions{
     margin: 0;
     padding: 0 0 8px !important;
@@ -22,4 +24,23 @@ mat-card-content p{
 
 button{
     font-size: 16px;
+}
+
+mat-card{
+    padding: 1.25rem;
+}
+
+mat-card-title{
+    font-weight: 400;
+    margin: 0 0 1rem;
+}
+
+p{
+    color: rgba(0,0,0,0.54);
+    margin: 0 0 1rem;
+}
+
+.start_btn{
+    height: 40px;
+    width: 100%;
 }

@@ -18,15 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('username');
-    sessionStorage.removeItem('id');
-    sessionStorage.removeItem('question_no');
-    sessionStorage.removeItem('question_id');
-    sessionStorage.removeItem('current_level');
-    sessionStorage.removeItem('is_double');
-    sessionStorage.removeItem('is_stage2started');
-    sessionStorage.removeItem('is_stage3started');
+    sessionStorage.clear();
     this.router.navigateByUrl('login');
 }
 

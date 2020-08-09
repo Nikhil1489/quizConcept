@@ -5,3 +5,13 @@ mat-toolbar{
 mat-toolbar-row{
     justify-content: space-between;
 }
+.white_logo{
+    img{
+        vertical-align: middle;
+    }
+}
+
+.logout_btn{
+    margin-right: -15px;
+    position: relative;
+}

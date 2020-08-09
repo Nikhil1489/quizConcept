@@ -1,6 +1,7 @@
 <form novalidate [formGroup]="doubleForm" (ngSubmit)="is_double()" autocomplete="off">
-    <h2>Do you wish to double the score for next stage?</h2>
-    <p>For each correct answer you will be awarded double marks, for each wrong answer there will be a negative mark </p>
+    <h2>You have reached level 2</h2>
+    <h4>Do you wish to double the score for next level?</h4>
+    <p>For each correct answer you will be awarded double marks, for each wrong answer there will be negative marks</p>
     <div class="row">
         <div class="col-md-12">
             <mat-radio-group aria-label="Select an option" formControlName="isdouble" [(ngModel)]="selectedDouble">
@@ -9,9 +10,10 @@
               </mat-radio-group>        
         </div>
     </div>
+    <div class="level2_img"><img src="../../../assets/level2.svg" alt="" /></div>
 
     <div class="row">
         <div class="col-md-12">
-      <button class="submit_btn" type="submit" mat-raised-button color="primary">Submit</button>
+      <button class="submit_btn" type="submit" mat-flat-button color="primary">Continue</button>
       </div></div>
 </form>
