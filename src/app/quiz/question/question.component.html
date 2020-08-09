@@ -1,11 +1,39 @@
 
-<div class="question" *ngIf="showQuestion">
-        <h2>{{question.question}}</h2>
-    <div class="answers">
-        <div><button mat-raised-button (click)="check_answer(question, 'a')"><span class="option_tag">A</span>{{question.option_a}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question, 'b')"><span class="option_tag">B</span>{{question.option_b}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question, 'c')"><span class="option_tag">C</span>{{question.option_c}}</button></div>
-        <div><button mat-raised-button (click)="check_answer(question, 'd')"><span class="option_tag">D</span>{{question.option_d}}</button></div>
-        <div><button color="accent" mat-raised-button (click)="check_answer(question, 'e')">SKIP</button></div>
+<div *ngIf="!quiz_end">
+
+    <div *ngIf="show_instructions">
+    <div class="container">
+        <div class="main">
+            <mat-card>
+                <mat-card-title>Instructions To Take Quiz</mat-card-title>
+                <mat-card-content>
+                    <p>This quiz consists of questions carefully designed to help you self-assess
+                        your comprehension of the information on the topics covered.</p>
+                    <p>The total score for the quiz is based on your responses to all questions. </p>
+                    <p> If you respond incorrectly to a question and get the correct response, your quiz score will reflect
+                        it appropriately.</p>
+                    <p>However, your quiz will not be graded, if you exit before responding to all
+                        the questions.</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button (click)="start_quiz()" mat-flat-button color="accent">Start Quiz</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
     </div>
+</div>
+
+
+    <div class="question" *ngIf="showQuestion && !show_instructions">
+        <h2>{{data?data.question_title: ''}}</h2>
+    <div class="answers">
+        <div><button mat-raised-button (click)="check_answer(data?data:'', 'a', $event)"><span class="option_tag">A</span>{{data?data.option_a:''}}</button></div>
+        <div><button mat-raised-button (click)="check_answer(data?data:'', 'b', $event)"><span class="option_tag">B</span>{{data?data.option_b:''}}</button></div>
+        <div><button mat-raised-button (click)="check_answer(data?data:'', 'c', $event)"><span class="option_tag">C</span>{{data?data.option_c:''}}</button></div>
+        <div><button mat-raised-button (click)="check_answer(data?data:'', 'd', $event)"><span class="option_tag">D</span>{{data?data.option_d:''}}</button></div>
+        <div><button color="accent" mat-raised-button (click)="check_answer(data?data:'', 'e', $event)">SKIP</button></div>
+    </div>
+</div></div>
+<div *ngIf="quiz_end">
+Quiz is Over
 </div>

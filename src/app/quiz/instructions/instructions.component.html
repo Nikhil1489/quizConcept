@@ -1,22 +1,20 @@
-<app-header></app-header>
-<div class="wrapper">
-    <div class="container">
-        <div class="main">
-            <mat-card>
-                <mat-card-title>Instructions To Take Quiz</mat-card-title>
-                <mat-card-subtitle>Time: {{time | date:'shortTime'}}</mat-card-subtitle>
-                <mat-card-content>
-                    <p>This quiz consists of questions carefully designed to help you self-assess
-                        your comprehension of the information on the topics covered.</p>
-                    <p>The total score for the quiz is based on your responses to all questions. </p>
-                    <p> If you respond incorrectly to a question and get the correct response, your quiz score will reflect it appropriately.</p>
-                    <p>However, your quiz will not be graded, if you exit before responding to all
-                        the questions.</p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button routerLink="/questions" mat-flat-button color="accent">Start Quiz</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
+<div class="container">
+    <div class="main">
+        <mat-card>
+            <mat-card-title>Instructions To Take Quiz</mat-card-title>
+            <mat-card-subtitle>Time: {{time | date:'shortTime'}}</mat-card-subtitle>
+            <mat-card-content>
+                <p>This quiz consists of questions carefully designed to help you self-assess
+                    your comprehension of the information on the topics covered.</p>
+                <p>The total score for the quiz is based on your responses to all questions. </p>
+                <p> If you respond incorrectly to a question and get the correct response, your quiz score will reflect
+                    it appropriately.</p>
+                <p>However, your quiz will not be graded, if you exit before responding to all
+                    the questions.</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button routerLink="/questions" mat-flat-button color="accent">Start Quiz</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
 </div>

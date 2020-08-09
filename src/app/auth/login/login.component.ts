@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if(sessionStorage.length != 0)
     {
-     this.router.navigateByUrl('instructions');
+     this.router.navigateByUrl('questions');
     }
   }
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('email', res.user_data.email);
           sessionStorage.setItem('id', res.user_data.user_id);
           sessionStorage.setItem('username', res.user_data.username);
-          this.router.navigateByUrl('instructions');
+          this.router.navigateByUrl('questions');
         }
         else {
           this._snackBar.open(res.message, 'OK', {
