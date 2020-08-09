@@ -1,6 +1,6 @@
-
+<div class="timer">{{displayTime}}</div>
 <div class="question" *ngIf="showQuestion">
-        <h2>{{question.question}}</h2>
+        <h2>{{question.question_title}}</h2>
     <div class="answers">
         <div><button mat-raised-button (click)="check_answer(question, 'a')"><span class="option_tag">A</span>{{question.option_a}}</button></div>
         <div><button mat-raised-button (click)="check_answer(question, 'b')"><span class="option_tag">B</span>{{question.option_b}}</button></div>

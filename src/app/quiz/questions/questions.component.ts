@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { questionsService } from 'src/app/services/questions';
+import { answerService } from 'src/app/services/answer';
 
 
 
@@ -19,7 +20,7 @@ export class QuestionsComponent implements OnInit {
   showQuestions: boolean = true;
   totalDisplayTime: any;
 
-  constructor(private questionsService: questionsService) {
+  constructor(private questionsService: questionsService, private answerService: answerService) {
 
     this.getQuestions();
 
@@ -55,7 +56,7 @@ export class QuestionsComponent implements OnInit {
         'userid': sessionStorage.getItem('id'),
         'is_double': sessionStorage.getItem('is_double'),
       }
-      this.getQuestionsFromService(formdata);
+      this.submitAnswerToService(formdata);
     }
   }
 
@@ -81,9 +82,25 @@ export class QuestionsComponent implements OnInit {
       if (res.result === 1) {
         if (res.posts.length > 0) {
           this.questions = res.posts;
-          sessionStorage.setItem('question_no', res.posts[0].question_no);
-          sessionStorage.setItem('question_id', res.posts[0].question_id);
-          sessionStorage.setItem('current_level', res.posts[0].level);
+         sessionStorage.setItem('question_no', res.posts[0].question_no);
+         sessionStorage.setItem('question_id', res.posts[0].question_id);
+         sessionStorage.setItem('current_level', res.posts[0].level);
+        }
+      }
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  submitAnswerToService(formdata) {
+    this.answerService.submitAnswer(formdata).subscribe((res: any) => {
+      console.log('this');
+      if (res.result === 1) {
+        if (res.posts.length > 0) {
+          this.questions = res.posts;
+         sessionStorage.setItem('question_no', res.posts[0].question_no);
+         sessionStorage.setItem('question_id', res.posts[0].question_id);
+         sessionStorage.setItem('current_level', res.posts[0].level);
         }
       }
     }, (error) => {
