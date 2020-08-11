@@ -94,7 +94,6 @@ export class QuestionsComponent implements OnInit {
 
   submitAnswerToService(formdata) {
     this.answerService.submitAnswer(formdata).subscribe((res: any) => {
-      console.log('this');
       if (res.result === 1) {
         if (res.posts.length > 0) {
           this.questions = res.posts;
