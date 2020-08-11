@@ -89,7 +89,6 @@ export class QuestionComponent implements OnInit {
 
     }
 
-    //this.stageThreeStart();
     this.quiz_end();
   }
 
@@ -118,22 +117,6 @@ export class QuestionComponent implements OnInit {
       this.newQuestionEvent.emit(res);
 
 
-      // if (res.result == 1) {
-
-      //   if (this.session_question_number === 21) {
-      //     this.showQuestion = false;
-      //     this.stagetwoStart();
-      //   }
-      //   else if (this.session_question_number == 31) {
-      //     this.showQuestion = false;
-      //     this.stageThreeStart();
-      //   }
-
-      //   this.is_answered = true;
-      //   this.newQuestionEvent.emit(res);
-
-      // }
-
     }, (error) => {
       this._snackBar.open(error.message, 'OK', {
         duration: 4000,
@@ -144,7 +127,8 @@ export class QuestionComponent implements OnInit {
   stagetwoStart() {
     if (sessionStorage.getItem('is_stage2started') == null) {
       const dialogRef = this.dialog.open(Stage2DialogComponent, {
-        disableClose: true
+        disableClose: true,
+        maxWidth: '320px'
       });
       dialogRef.afterClosed().subscribe(result => {
         this.showQuestion = true;
@@ -174,7 +158,8 @@ export class QuestionComponent implements OnInit {
       if (sessionStorage.getItem('is_stage3started') == null) {
         this.showQuestion = false;
         const dialogRef = this.dialog.open(Stage3DialogComponent, {
-          disableClose: true
+          disableClose: true,
+          maxWidth: '320px'
         });
         dialogRef.afterClosed().subscribe(result => {
           this.showQuestion = true;
@@ -227,64 +212,9 @@ export class QuestionComponent implements OnInit {
     }, (error) => {
       this._snackBar.open(error.message, 'OK', {
         duration: 4000,
+        panelClass: 'custom_snack'
       });
     });
   }
 }
 
-
-
-
-//old code
-
-
-    // if (answer === this.question.correct_answer) {
-    //   let formData = {
-    //     'question_no': this.currentQuestion,
-    //     'answer_no': answer,
-    //     'userid': sessionStorage.getItem('id'),
-    //   }
-
-
-    //   this.answerService.submitAnswer(formData).subscribe((res: any) => {
-    //     if (res.result == 1) {
-    //       const dialogRef = this.dialog.open(SuccessComponent, {
-    //         disableClose: true
-    //       });
-
-    //       dialogRef.afterClosed().subscribe(result => {
-    //         this.newQuestionEvent.emit(res);
-    //       });
-
-    //     }
-
-    //   }, (error) => {
-    //     this._snackBar.open(error.message, 'OK', {
-    //       duration: 4000,
-    //     });
-    //   });
-    // }
-    // else {
-    //   let formData = {
-    //     'qstnid': this.currentQuestion,
-    //     'userid': sessionStorage.getItem('id'),
-    //     'answertxt': answer
-    //   }
-    //   this.answerService.submitAnswer(formData).subscribe((res: any) => {
-    //     if (res.result == 1) {
-    //       const dialogRef = this.dialog.open(FailureComponent, {
-    //         disableClose: true
-    //       });
-
-    //       dialogRef.afterClosed().subscribe(result => {
-    //         this.newQuestionEvent.emit(res);
-    //       });
-
-    //     }
-
-    //   }, (error) => {
-    //     this._snackBar.open(error.message, 'OK', {
-    //       duration: 4000,
-    //     });
-    //   });
-    // }

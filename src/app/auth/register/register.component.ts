@@ -76,6 +76,7 @@ export class RegisterComponent implements OnInit {
       this.registerService.register(this.regForm.getRawValue()).subscribe((res: any) => {
         this._snackBar.open(res.message, 'OK', {
           duration: 4000,
+          panelClass: 'custom_snack'
         });
       }, (error) => {
         this._snackBar.open(error.message, 'OK', {

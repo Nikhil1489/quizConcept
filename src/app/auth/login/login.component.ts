@@ -56,11 +56,13 @@ export class LoginComponent implements OnInit {
         else {
           this._snackBar.open(res.message, 'OK', {
             duration: 4000,
+            panelClass: 'custom_snack'
           });
         }
       }, (error) => {
         this._snackBar.open(error.message, 'OK', {
           duration: 4000,
+          panelClass: 'custom_snack'
         });
       });
     }
