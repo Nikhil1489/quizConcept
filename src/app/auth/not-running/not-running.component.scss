@@ -1,0 +1,39 @@
+mat-toolbar{
+    position: relative;
+}
+
+mat-toolbar-row{
+    justify-content: space-between;
+}
+.white_logo{
+    img{
+        vertical-align: middle;
+    }
+}
+
+.logout_btn{
+    margin-right: -15px;
+    position: relative;
+}
+
+.not_running{
+    height: calc(100vh - 56px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    align-content: center;
+
+    @media(min-width:575px)
+    {
+        height: calc(100vh - 64px);
+    }
+
+    h2{
+        margin: 0 0 2rem;
+        text-align: center;
+        font-weight: 400;
+        width: 100%;
+    }
+}

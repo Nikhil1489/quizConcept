@@ -48,10 +48,15 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.loginService.register(this.loginForm.getRawValue()).subscribe((res: any) => {
         if (res.result === 1) {
-          sessionStorage.setItem('email', res.user_data.email);
-          sessionStorage.setItem('id', res.user_data.user_id);
-          sessionStorage.setItem('username', res.user_data.username);
-          this.router.navigateByUrl('instructions');
+         if(res.start_test == 1){
+            sessionStorage.setItem('email', res.user_data.email);
+            sessionStorage.setItem('id', res.user_data.user_id);
+            sessionStorage.setItem('username', res.user_data.username);
+            this.router.navigateByUrl('instructions');
+          }
+          else{
+            this.router.navigateByUrl('not-running');
+          }
         }
         else {
           this._snackBar.open(res.message, 'OK', {

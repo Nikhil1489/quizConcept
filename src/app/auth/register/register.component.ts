@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { registerService } from 'src/app/services/register';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 interface Dropdown {
   value: string;
@@ -44,11 +45,12 @@ export class RegisterComponent implements OnInit {
   sucessmessage: string = null;
   errormessage: string = null;
 
-  constructor(private fb: FormBuilder, private registerService: registerService, private _snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private router: Router, private registerService: registerService, 
+    private _snackBar: MatSnackBar) {
 
     this.regForm = this.fb.group({
       'name': [null, Validators.required],
-      'email': [null, [Validators.required, Validators.email]],
+      'email': [null, [Validators.required, Validators.email, Validators.minLength(4), Validators.maxLength(100)]],
       'password': [null, Validators.required],
       'location': [null],
       'gender': [null],
@@ -74,10 +76,19 @@ export class RegisterComponent implements OnInit {
     this.markFormGroupTouched(this.regForm);
     if (this.regForm.valid) {
       this.registerService.register(this.regForm.getRawValue()).subscribe((res: any) => {
-        this._snackBar.open(res.message, 'OK', {
-          duration: 4000,
-          panelClass: 'custom_snack'
-        });
+
+        if(res.message == 'success')
+        {
+          this.router.navigateByUrl('/registration-successful');
+        }
+        else
+        {
+          this._snackBar.open(res.message, 'OK', {
+            duration: 4000,
+            panelClass: 'custom_snack'
+          });
+        }
+
       }, (error) => {
         this._snackBar.open(error.message, 'OK', {
           duration: 4000,
