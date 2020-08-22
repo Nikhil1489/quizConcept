@@ -11,6 +11,12 @@ export class NotRunningComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      sessionStorage.clear();
+      this.router.navigateByUrl('login');
+    }, 10000);
+
   }
 
   logout(){

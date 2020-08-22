@@ -1,7 +1,7 @@
 {
-  "name": "Quiz Concept",
-  "short_name": "Quiz Concept",
-  "theme_color": "#673ab7",
+  "name": "Quiz Mania",
+  "short_name": "Quiz Mania",
+  "theme_color": "#124191",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",
