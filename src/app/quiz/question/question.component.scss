@@ -9,7 +9,7 @@
     align-items: center;
     align-content: center;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 90%;
     height: calc(100vh - 120);
 
     @media (min-width: 600px) {
@@ -82,3 +82,20 @@
     padding: 0 1rem;
 
 }
+
+.question_left, .question_right{width: 100%;
+    justify-content: center;
+
+    @media(min-width:768px)
+    {
+        width: 50%;
+    }
+
+}
+
+
+@media(max-width:767px)
+{
+    .question_left{display: none;}
+}
+
